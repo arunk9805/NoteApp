@@ -1,7 +1,6 @@
 import './App.css'
-import Mynotes from "./components/Mynotes.jsx";
-import MyNotesList from "./components/MyNotesList.jsx"
-import TextArea from './components/TextArea.jsx';
+import Home from './components/Home'
+
 
 function App() {
 
