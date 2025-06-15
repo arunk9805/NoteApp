@@ -11,6 +11,12 @@ function Mynotes() {
         <p>Send and receive messages without keeping your phone online.</p>
         <p>Use Pocket Notes on up to 4 linked devices and 1 mobile phone</p>
       </div>
+
+      <div className="show-data">
+        
+      </div>
+
+
     </div>
   );
 }
