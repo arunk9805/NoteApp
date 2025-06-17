@@ -1,10 +1,14 @@
 import "./components.css";
-import Notes from "../assets/data";
+import { useContext } from "react";
+import { NotesContext } from "../context/NoteContext";
+
 
 function MyNotesList() {
 
+  const {notesData, setSelectedNoteIndex} = useContext(NotesContext);
+
   const handleNote = (index) => {
-    
+    setSelectedNoteIndex(index);
   };
 
   const getInitials = (title) => {
@@ -21,8 +25,8 @@ function MyNotesList() {
     <div className="notes-list">
       <p className="heading">Pocket Notes</p>
       <div className="all-notes">
-        {Notes.map((noteData, index) => (
-          <div className="note" key={index} onClick={handleNote(index)}>
+        {notesData.map((noteData, index) => (
+          <div className="note" key={index} onClick={() => handleNote(index)}>
             <div className="icon">
               <p className="icon-image">{getInitials(noteData.title)}</p>
             </div>

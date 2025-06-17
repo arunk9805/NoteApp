@@ -3,6 +3,7 @@ import Mynotes from "./Mynotes";
 import "./components.css";
 
 function Home() {
+
   return (
     <>
       <div className="mynoteslist">

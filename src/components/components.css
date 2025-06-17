@@ -15,6 +15,7 @@
   align-items: center;
   height: 100vh;
   cursor: pointer;
+  position: relative;
 }
 
 .heading {
@@ -25,7 +26,7 @@
 }
 
 .all-notes {
-    overflow-y: scroll;
+    overflow-y: auto;
     width: 100%;
     height: 100vh;
 }
@@ -66,9 +67,10 @@
   align-items: center;
   background: #16008B;
   color: #FFFFFF;
-  position: fixed;
+  position: sticky;
   bottom: 50px;
-  right: 1050px;
+  /* right: 40px; */
+  margin-left: 60%;
   display: flex;
   font-size: 70px;
   cursor: pointer;
@@ -88,11 +90,44 @@
   align-items: center;
 }
 
+.mynote-main-container-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 60vh;
+  margin: 10px 0;
+  overflow-y: auto;
+}
+
+.show-data {
+  background: white;
+  width: 90%;
+  height: auto;
+  margin: 10px 1px ;
+  padding: 20px 20px 12px 20px;
+  border-radius: 6px;
+  box-shadow: 5px 3px rgba(0, 0, 0, 0.07);;
+}
+
+.notes {
+  padding-bottom: 20px;
+}
+
+.date-and-time {
+  display: flex;
+  justify-content: end;
+  padding-right: 25px;
+  
+}
+
+.date-and-time span {
+  margin: 0px 5px;
+}
 
 /* NAVBAR */
 
 .navbar {
-  height: 95px;
+  height: 90px;
   background: #001F8B;
   display: flex;
   flex-direction: row;

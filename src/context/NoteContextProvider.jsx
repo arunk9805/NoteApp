@@ -1,11 +1,15 @@
+import { useState } from "react";
 import { NotesContext } from "./NoteContext";
+import Notes from "../assets/data";
 
 const NoteContextProvider = ({children}) => {
   
+    const [notesData, setNotesData] = useState(Notes);
+    const [selectedNoteIndex, setSelectedNoteIndex] = useState(null);
+
   return (
-    //need setup discussion and state management - This is dummy data. 
     <NotesContext.Provider
-      value = {{isAddClicked, setAddClick, details, setDetails}}
+      value = {{notesData, setNotesData, selectedNoteIndex, setSelectedNoteIndex}}
     >
       {children}
     </NotesContext.Provider>
