@@ -18,7 +18,7 @@ function Navbar() {
   return (
     <div className="navbar">
       <div className="icon">
-        <p className="icon-image">{getInitials(notesData[selectedNoteIndex]?.title)}</p>
+        <p className="icon-image" style={{background: notesData[selectedNoteIndex].bgColor}}>{getInitials(notesData[selectedNoteIndex]?.title)}</p>
       </div>
       <div className="note-title">
         <p>{notesData[selectedNoteIndex]?.title}</p>

@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import MyNotesList from "./MyNotesList";
 import Mynotes from "./Mynotes";
 import "./components.css";
+import { NotesContext } from "../context/NoteContext";
+import PopUp from "./PopUp";
 
 function Home() {
+
+  const {showPopup} = useContext(NotesContext);
 
   return (
     <>
@@ -13,6 +18,8 @@ function Home() {
       <div className="mynotes">
         <Mynotes />
       </div>
+      {showPopup && <PopUp />}
+
     </>
   );
 }

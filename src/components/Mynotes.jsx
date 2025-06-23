@@ -3,13 +3,34 @@ import homeBanner from "../assets/homeBanner.svg";
 import Navbar from "./Navbar";
 import { NotesContext } from "../context/NoteContext";
 import "./components.css";
+import InputBox from "./InputBox";
 
 function Mynotes() {
   const { notesData, selectedNoteIndex } = useContext(NotesContext);
-  console.log(notesData[selectedNoteIndex]?.title);
+
+  const formattedDate = (timeStemp) => {
+    const date = new Date(timeStemp); 
+
+    const day = date.getDate();
+    const month = date.toLocaleString("default", {month: "long"});
+    const year = date.getFullYear();
+    
+    return `${day} ${month} ${year}`; 
+  }
+
+  const formattedTime = (timeStemp) =>  {
+
+    const date = new Date(timeStemp);
+    const hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const ampm = (hours>=12) ? "PM" : "AM";
+    const formattedHours = hours%12 || 12;
+
+   return `${formattedHours}:${minutes} ${ampm}`;
+  }
+ 
   return (
     <div>
-      {/* <Navbar /> */}
       {selectedNoteIndex == null && (
         <div className="mynote-main-container">
           <img src={homeBanner} alt="Home Banner" />
@@ -23,25 +44,18 @@ function Mynotes() {
         <>
           <Navbar />
           <div className="mynote-main-container-2">
-            {[...Array(5)].map((_, i) => (
-              <div className="show-data">
-                <p className="notes">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure
-                  cum sunt quas quae animi incidunt accusamus tempora corporis
-                  officia doloribus quam repudiandae suscipit alias earum
-                  upiditate iure libero dolorum quae! blanditiis reprehenderit
-                  quia, eum nemo itaque excepturi vero enim nesciunt sint
-                  maxime! Enim dolores animi voluptatem labore praesentium ipsa,
-                  saepe cupiditate iure libero dolorum quae!
-                </p>
+            {notesData[selectedNoteIndex]?.noteData.map((item, index) => (
+              <div className="show-data" key={index}>
+                <p className="notes">{item.message}</p>
                 <p className="date-and-time">
-                  <span>9 Mar 2025</span>
+                  <span>{formattedDate(item.timeStemps)}</span>
                   <span className="dot">•</span>
-                  <span>10:36 PM</span>
+                  <span>{formattedTime(item.timeStemps)}</span>
                 </p>
               </div>
             ))}
           </div>
+          <InputBox />
         </>
       )}
     </div>

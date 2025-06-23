@@ -5,7 +5,7 @@ import { NotesContext } from "../context/NoteContext";
 
 function MyNotesList() {
 
-  const {notesData, setSelectedNoteIndex} = useContext(NotesContext);
+  const {notesData, setSelectedNoteIndex, setShowPopup} = useContext(NotesContext);
 
   const handleNote = (index) => {
     setSelectedNoteIndex(index);
@@ -21,6 +21,10 @@ function MyNotesList() {
     }
   }
 
+  const handlePopup = () => {
+    setShowPopup(true);
+  }
+
   return (
     <div className="notes-list">
       <p className="heading">Pocket Notes</p>
@@ -28,13 +32,13 @@ function MyNotesList() {
         {notesData.map((noteData, index) => (
           <div className="note" key={index} onClick={() => handleNote(index)}>
             <div className="icon">
-              <p className="icon-image">{getInitials(noteData.title)}</p>
+              <p className="icon-image" style={{background: noteData.bgColor}} >{getInitials(noteData.title)}</p>
             </div>
             <div className="note-title">{noteData.title}</div>
           </div>
         ))}
       </div>
-      <button className="add-notes-btn"> + </button>
+      <button className="add-notes-btn" onClick={handlePopup}> + </button>
     </div>
   );
 }
