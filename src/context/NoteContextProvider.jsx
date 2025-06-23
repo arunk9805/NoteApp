@@ -1,14 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NotesContext } from "./NoteContext";
 import Notes from "../assets/data";
 
 const NoteContextProvider = ({children}) => {
   
-    const [notesData, setNotesData] = useState(Notes);
+    const [notesData, setNotesData] = useState(() => {
+      const saved = localStorage.getItem("notesData");
+      return saved ? JSON.parse(saved) : Notes;
+    });
+
     const [selectedNoteIndex, setSelectedNoteIndex] = useState(null);
     const [showPopup, setShowPopup] = useState(false);
     const [color, setColor] = useState("");
     const [groupName, setGroupName] = useState("");
+
+    useEffect(() => {
+      localStorage.setItem("notesData", JSON.stringify(notesData))
+    }, [notesData])
 
   return (
     <NotesContext.Provider

@@ -22,6 +22,7 @@ function PopUp() {
     setColor,
     groupName,
     setGroupName,
+    setSelectedNoteIndex
   } = useContext(NotesContext);
 
   const handleClosePopUp = () => {
@@ -48,12 +49,14 @@ function PopUp() {
 
     const updatedNotesData = [...notesData, newData];
 
+    
     setNotesData(updatedNotesData);
     setShowPopup(false);
     setGroupName("");
     setColor("");
+    setSelectedNoteIndex(notesData.length);
   };
-
+  
   return (
     <div className="popup-overlay" onClick={handleClosePopUp}>
       <div className="popup-box" onClick={(e) => e.stopPropagation()}>
